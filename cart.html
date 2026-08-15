@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Basket - Workwear Express</title>
+
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<style>
+  :root{
+    --ww-orange: #f2600c;
+    --ww-orange-dark: #e05500;
+    --ww-green: #1c9b45;
+    --ww-green-dark: #17853b;
+    --ww-text: #2b2b2b;
+    --ww-muted: #767676;
+    --ww-link: #f2600c;
+    --ww-border: #e6e6e6;
+    --ww-bg: #f4f4f4;
+  }
+
+  body{
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: var(--ww-text);
+    background-color: #fff;
+  }
+
+  a{ text-decoration: none; }
+
+  /* ===== Top bar ===== */
+  .top-header{
+    background-color: var(--ww-orange);
+    padding: 14px 0 10px 0;
+  }
+  .top-header .nav-link-sm{
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .top-header .nav-link-sm i{ margin-right: 6px; }
+
+  .logo-box{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-box .logo-icon{
+    background: #fff;
+    color: var(--ww-orange);
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .logo-box .logo-text{
+    color: #fff;
+    line-height: 1.1;
+  }
+  .logo-box .logo-text .brand{
+    font-weight: 700;
+    font-size: 20px;
+    display:block;
+  }
+  .logo-box .logo-text .tagline{
+    font-size: 11px;
+    opacity: .9;
+  }
+
+  .search-wrap{
+    max-width: 420px;
+  }
+  .search-wrap .form-control{
+    border-radius: 4px 0 0 4px;
+    border: none;
+    height: 42px;
+  }
+  .search-wrap .btn-search{
+    background: #fff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    color: var(--ww-orange);
+    height: 42px;
+    width: 44px;
+  }
+
+  .call-us{
+    color: #fff;
+    font-size: 13px;
+  }
+  .call-us .number{
+    font-weight: 700;
+    font-size: 16px;
+    display:block;
+  }
+
+  .basket-btn{
+    background: #fff;
+    color: var(--ww-text);
+    border-radius: 4px;
+    padding: 8px 14px;
+    font-weight: 600;
+    font-size: 14px;
+    position: relative;
+    border: none;
+  }
+  .basket-btn .badge-count{
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 6px;
+  }
+
+  .currency-toggle{
+    color: #fff;
+    font-size: 13px;
+  }
+  .form-check-input.vat-switch{
+    background-color: rgba(255,255,255,.5);
+  }
+  .form-check-input.vat-switch:checked{
+    background-color: #fff;
+    border-color: #fff;
+  }
+
+  /* ===== Main nav ===== */
+  .main-nav{
+    background: #fff;
+    border-bottom: 1px solid var(--ww-border);
+  }
+  .main-nav .nav-link{
+    color: var(--ww-text);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 14px;
+  }
+  .main-nav .nav-link:hover{ color: var(--ww-orange); }
+  .main-nav .nav-link.active-clearance{
+    background: #1a1a1a;
+    color: #fff;
+  }
+
+  /* ===== Promo strip ===== */
+  .promo-strip{
+    background: #f1f1f1;
+    font-size: 13px;
+    padding: 8px 0;
+    color: #444;
+  }
+  .promo-strip strong{ font-weight: 700; }
+  .promo-strip .divider{ color: #ccc; }
+
+  /* ===== Green strip ===== */
+  .green-strip{
+    background: var(--ww-green);
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 0;
+  }
+  .green-strip .divider{
+    opacity: .5;
+    margin: 0 8px;
+  }
+  .green-strip .stars i{
+    color: #ffd447;
+    font-size: 13px;
+  }
+  .green-strip .stars i.empty{
+    color: rgba(255,255,255,.4);
+  }
+
+  /* ===== Basket page ===== */
+  .basket-page{
+    background: var(--ww-bg);
+    padding: 30px 0 60px 0;
+  }
+  .page-title{
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .basket-card{
+    background: #fff;
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin-bottom: 18px;
+  }
+
+  .item-row{
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--ww-border);
+  }
+  .item-thumb{
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    background: #fafafa;
+    border: 1px solid var(--ww-border);
+    border-radius: 4px;
+    padding: 6px;
+    flex-shrink: 0;
+  }
+  .item-name{
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .item-meta{
+    font-size: 13px;
+    color: var(--ww-muted);
+  }
+  .item-meta .sku{
+    margin-right: 10px;
+  }
+  .remove-link{
+    color: var(--ww-orange);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .remove-link:hover{ text-decoration: underline; }
+
+  .qty-box{
+    display: flex;
+    align-items: center;
+    border: 1px solid #d8d8d8;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100px;
+    height: 34px;
+  }
+  .qty-box button{
+    background: #f2f2f2;
+    border: none;
+    width: 32px;
+    height: 100%;
+    font-weight: 700;
+    color: #333;
+  }
+  .qty-box input{
+    border: none;
+    text-align: center;
+    width: 36px;
+    font-weight: 600;
+    padding: 0;
+  }
+  .qty-box input:focus{ outline: none; box-shadow: none;}
+
+  .price-each{
+    font-weight: 700;
+    font-size: 16px;
+    text-align: right;
+  }
+  .price-each .sub{
+    font-weight: 400;
+    font-size: 11px;
+    color: var(--ww-muted);
+    display:block;
+  }
+
+  .logo-row{
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--ww-border);
+  }
+  .logo-thumb{
+    width: 64px;
+    height: 64px;
+    border: 1px dashed #d8b48c;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff8f0;
+    flex-shrink: 0;
+    color: var(--ww-orange);
+    font-size: 22px;
+  }
+  .logo-title{
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+  .logo-title i{ margin-right: 6px; color: #666; }
+  .logo-desc{
+    font-size: 13px;
+    color: var(--ww-muted);
+    margin-bottom: 6px;
+  }
+  .logo-actions a{
+    font-size: 13px;
+    font-weight: 600;
+    margin-right: 14px;
+  }
+  .logo-actions a.edit{ color: var(--ww-orange); }
+  .logo-actions a.copy{ color: var(--ww-orange); }
+  .logo-actions a.remove{ color: var(--ww-orange); }
+  .logo-price{
+    font-weight: 700;
+    font-size: 16px;
+    text-align: right;
+  }
+
+  .add-logo-btn{
+    background: #a9a9a9;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 18px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 16px;
+  }
+  .add-logo-btn.dark{
+    background: #1a1a1a;
+  }
+
+  .total-item-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    font-size: 15px;
+  }
+  .total-item-row .amount{
+    color: var(--ww-green);
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  .single-item-row{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 4px;
+  }
+
+  .discount-toggle{
+    background: #fff;
+    border-radius: 6px;
+    padding: 14px 24px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--ww-text);
+    cursor: pointer;
+  }
+
+  /* ===== Order summary ===== */
+  .summary-card{
+    background: #fff;
+    border-radius: 6px;
+    padding: 24px;
+  }
+  .summary-title{
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 18px;
+  }
+  .summary-row{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 7px 0;
+    color: #444;
+  }
+  .summary-row.total-row{
+    border-top: 1px solid var(--ww-border);
+    margin-top: 6px;
+    padding-top: 12px;
+    font-weight: 700;
+    color: var(--ww-text);
+  }
+  .summary-row.vat-row{
+    border-bottom: 1px solid var(--ww-border);
+    padding-bottom: 14px;
+  }
+  .your-total-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .your-total-row .amount{
+    color: var(--ww-green);
+    font-size: 26px;
+  }
+
+  .logo-note{
+    background: #f4f9f5;
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: #444;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin: 18px 0;
+  }
+  .logo-note i{
+    color: var(--ww-green);
+    margin-top: 2px;
+  }
+
+  .btn-share{
+    width: 100%;
+    background: #fff;
+    border: 1px solid #d8d8d8;
+    border-radius: 4px;
+    padding: 12px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .btn-checkout{
+    width: 100%;
+    background: var(--ww-orange);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .btn-checkout:hover{ background: var(--ww-orange-dark); color: #fff; }
+
+  .trust-list{
+    margin-top: 22px;
+    list-style: none;
+    padding: 0;
+  }
+  .trust-list li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .trust-list li:last-child{ border-bottom: none; }
+  .trust-list i{
+    color: var(--ww-green);
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+  }
+  .pay-icons{
+    display:flex;
+    gap: 8px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .pay-icons span{
+    border: 1px solid var(--ww-border);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #555;
+  }
+
+  .help-fab{
+    position: fixed;
+    right: 22px;
+    bottom: 30px;
+    background: var(--ww-orange);
+    color: #fff;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.2);
+    z-index: 999;
+  }
+
+  /* ===== Footer ===== */
+  .site-footer{
+    background: #fff;
+    padding: 50px 0 20px 0;
+    border-top: 1px solid var(--ww-border);
+  }
+  .footer-heading{
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+  .footer-links li{ margin-bottom: 9px; }
+  .footer-links a{
+    color: #555;
+    font-size: 14px;
+  }
+  .footer-links a:hover{ color: var(--ww-orange); }
+  .badge-row{
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 20px 0 34px 0;
+  }
+  .badge-row .badge-circle{
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid var(--ww-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    text-align: center;
+    color: #555;
+  }
+  .social-row a{
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--ww-border);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    margin-right: 8px;
+  }
+  .footer-bottom{
+    border-top: 1px solid var(--ww-border);
+    margin-top: 30px;
+    padding-top: 20px;
+    font-size: 13px;
+    color: #666;
+  }
+
+  @media (max-width: 991px){
+    .top-header .col-search{ order: 3; width: 100%; margin-top: 10px; }
+    .price-each{ text-align: left; margin-top: 8px; }
+    .single-item-row{ flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= TOP HEADER ================= -->
+<header class="top-header">
+  <div class="container">
+    <!-- utility row -->
+    <div class="d-none d-lg-flex justify-content-end gap-4 mb-2">
+      <!-- <a href="#" class="nav-link-sm"><i class="bi bi-geo-alt"></i>Track order</a>
+      <a href="#" class="nav-link-sm"><i class="bi bi-question-circle"></i>Need Help</a>
+      <a href="#" class="nav-link-sm"><i class="bi bi-box-seam"></i>Corporate Solutions &amp; Pricing</a> -->
+      <a href="#" class="nav-link-sm"><i class="bi bi-person-circle"></i>Login / Register</a>
+      <!-- <div class="d-flex align-items-center gap-2 nav-link-sm">
+        <span>USD</span><i class="bi bi-caret-down-fill" style="font-size:10px;"></i>
+        <span class="ms-2">inc vat</span>
+        <div class="form-check form-switch m-0">
+          <input class="form-check-input vat-switch" type="checkbox" checked>
+        </div>
+        <span>exc vat</span>
+      </div> -->
+    </div>
+
+    <!-- main row -->
+    <div class="row align-items-center gy-2">
+      <div class="col-6 col-lg-auto">
+        <a href="#" class="logo-box">
+          <div class="logo-icon">W</div>
+          <div class="logo-text">
+            <span class="brand">Workwear<br>Express</span>
+            <span class="tagline">Trust us with your name</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-lg col-search order-3 order-lg-2 col-12">
+        <div class="search-wrap d-flex mx-auto">
+          <input type="text" class="form-control" placeholder="Search (e.g. Polo Shirts)..">
+          <button class="btn-search"><i class="bi bi-search"></i></button>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-auto order-2 order-lg-3 text-end">
+        <a href="#" class="call-us d-none d-md-block">
+          <i class="bi bi-telephone-fill"></i> Call us free on
+          <span class="number">0800 028 5867</span>
+        </a>
+      </div>
+
+      <div class="col-lg-auto order-4 text-end">
+        <a href="cart.html" class="basket-btn">
+            <i class="bi bi-cart3"></i> Basket
+            <span class="badge-count">3</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= MAIN NAV ================= -->
+<nav class="main-nav">
+  <div class="container">
+    <ul class="nav flex-nowrap overflow-auto">
+      <li class="nav-item"><a class="nav-link" href="/">All Products</a></li>
+      <li class="nav-item"><a class="nav-link" href="/">Brands</a></li>
+      <li class="nav-item"><a class="nav-link" href="/">Jackets</a></li>
+      <li class="nav-item"><a class="nav-link" href="/">T-Shirts</a></li>
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Polo Shirts</a></li>
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Hi Vis</a></li>
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Trousers</a></li>
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Footwear</a></li>
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">PPE</a></li>
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Hoodies</a></li>
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Deals</a></li>
+      <li class="nav-item"><a class="nav-link active-clearance" href="product.html">Clearance</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ================= PROMO STRIP ================= -->
+<div class="promo-strip">
+  <div class="container d-flex flex-wrap gap-2 gap-md-4 justify-content-center justify-content-md-start">
+    <span><i class="bi bi-gift"></i> <strong>Free Returns</strong> For Up To 28 Days!*</span>
+    <span class="divider d-none d-md-inline">|</span>
+    <span><i class="bi bi-patch-check"></i> <strong>Price Beat Guarantee</strong> Loved By Over 2 Million Customers!</span>
+    <span class="divider d-none d-md-inline">|</span>
+    <span><i class="bi bi-brush"></i> <strong>Free Logo Setup</strong> We'll create your logo for free</span>
+  </div>
+</div>
+
+<!-- ================= GREEN STRIP ================= -->
+<div class="green-strip">
+  <div class="container d-flex flex-wrap justify-content-center gap-2 gap-md-1 align-items-center">
+    <span><i class="bi bi-award"></i> UK's number one since 1990</span>
+    <span class="divider d-none d-md-inline">|</span>
+    <span><i class="bi bi-truck"></i> Get free delivery on orders over £49 net!</span>
+    <span class="divider d-none d-md-inline">|</span>
+    <span>Trustpilot
+      <span class="stars">
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill empty"></i>
+      </span>
+    </span>
+  </div>
+</div>
+
+<!-- ================= BASKET PAGE ================= -->
+<main class="basket-page">
+  <div class="container">
+    <h1 class="page-title">My Basket</h1>
+
+    <div class="row">
+      <!-- LEFT: items -->
+      <div class="col-lg-8">
+
+        <!-- Item 1 -->
+        <div class="basket-card">
+          <div class="item-row">
+            <img src="https://placehold.co/64x64/1a1a1a/1a1a1a" class="item-thumb" alt="Awdis Just Cool Vest">
+            <div class="flex-grow-1">
+              <div class="item-name">Awdis Just Cool Vest</div>
+              <div class="item-meta">
+                <span class="sku">JC007</span>
+                <span>Jet Black, 2XL</span>
+                &nbsp;&nbsp;<a href="#" class="remove-link">Remove</a>
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="qty-box mb-1">
+                <button type="button">-</button>
+                <input type="text" value="1" readonly>
+                <button type="button">+</button>
+              </div>
+            </div>
+            <div class="price-each" style="min-width:90px;">
+              $9.33
+              <span class="sub">each (exc. VAT)</span>
+            </div>
+          </div>
+
+          <div class="logo-row">
+            <div class="logo-thumb"><i class="bi bi-badge-tm"></i></div>
+            <div class="flex-grow-1">
+              <div class="logo-title"><i class="bi bi-badge-tm"></i> Logo: We'll contact you</div>
+              <div class="logo-desc">Nape of Neck, Right Breast, Centre of Chest, Left Breast, Big Front, Big Back</div>
+              <div class="logo-actions">
+                <a href="#" class="edit">Edit</a>
+                <a href="#" class="copy">Copy</a>
+                <a href="#" class="remove">Remove</a>
+              </div>
+            </div>
+            <div class="logo-price">$72.27</div>
+          </div>
+
+          <button class="add-logo-btn">Add another logo to this item</button>
+
+          <div class="total-item-row">
+            <span>Total item cost:</span>
+            <span class="amount">$81.60</span>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="basket-card">
+          <div class="item-row">
+            <img src="https://placehold.co/64x64/1a1a1a/1a1a1a" class="item-thumb" alt="B&C Collection Inspire E150 T-Shirt">
+            <div class="flex-grow-1">
+              <div class="item-name">B&amp;C Collection Inspire E150 Pre-Shrunk Ringspun Cotton T-Shirt</div>
+              <div class="item-meta">
+                <span class="sku">BA210</span>
+                <span>Black, XS</span>
+                &nbsp;&nbsp;<a href="#" class="remove-link">Remove</a>
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="qty-box mb-1">
+                <button type="button">-</button>
+                <input type="text" value="1" readonly>
+                <button type="button">+</button>
+              </div>
+            </div>
+            <div class="price-each" style="min-width:90px;">
+              $8.52
+              <span class="sub">each (exc. VAT)</span>
+            </div>
+          </div>
+
+          <div class="logo-row">
+            <div class="logo-thumb"><i class="bi bi-badge-tm"></i></div>
+            <div class="flex-grow-1">
+              <div class="logo-title"><i class="bi bi-badge-tm"></i> Logo: We'll Find It &amp; Confirm With You</div>
+              <div class="logo-desc">Left Breast, Right Breast, Big Front</div>
+              <div class="logo-actions">
+                <a href="#" class="edit">Edit</a>
+                <a href="#" class="copy">Copy</a>
+                <a href="#" class="remove">Remove</a>
+              </div>
+            </div>
+            <div class="logo-price">$36.14</div>
+          </div>
+
+          <button class="add-logo-btn dark">Add another logo to this item</button>
+
+          <div class="total-item-row">
+            <span>Total item cost:</span>
+            <span class="amount">$44.66</span>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="basket-card">
+          <div class="single-item-row">
+            <img src="https://placehold.co/64x64/1a1a1a/1a1a1a" class="item-thumb" alt="Rock Fall Omaha Chukka Safety Shoe">
+            <div class="flex-grow-1">
+              <div class="item-name">Rock Fall Omaha Chukka Safety Shoe</div>
+              <div class="item-meta">
+                <span class="sku">PM102</span>
+                <span>Black, 2</span>
+                &nbsp;&nbsp;<a href="#" class="remove-link">Remove</a>
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="qty-box mb-1">
+                <button type="button">-</button>
+                <input type="text" value="1" readonly>
+                <button type="button">+</button>
+              </div>
+            </div>
+            <div class="price-each" style="min-width:90px;">
+              $20.68
+              <span class="sub">each (exc. VAT)</span>
+            </div>
+          </div>
+          <div class="total-item-row" style="border-top:none;">
+            <span>Total item cost:</span>
+            <span class="amount">$20.68</span>
+          </div>
+        </div>
+
+        <!-- Discount code -->
+        <div class="discount-toggle">
+          Add a discount code
+          <i class="bi bi-chevron-down"></i>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: order summary -->
+      <div class="col-lg-4 mt-4 mt-lg-0">
+        <div class="summary-card">
+          <div class="summary-title">Your order summary</div>
+
+          <div class="summary-row">
+            <span>Product Costs</span><span>$38.53</span>
+          </div>
+          <div class="summary-row">
+            <span>Costs To Add Logo</span><span>$108.41</span>
+          </div>
+          <div class="summary-row">
+            <span>Total (exc. VAT)</span><span>$146.94</span>
+          </div>
+          <div class="summary-row vat-row">
+            <span>VAT (on Total)</span><span>$29.39</span>
+          </div>
+
+          <div class="your-total-row">
+            <span>Your total (inc. VAT)</span>
+            <span class="amount">$176.33</span>
+          </div>
+
+          <div class="logo-note">
+            <i class="bi bi-shield-check"></i>
+            <div>Adding a new logo or text? We'll email a mock up to approve before we begin!</div>
+          </div>
+
+          <button class="btn-share">Share Basket</button>
+          <button class="btn-checkout">Continue to checkout</button>
+
+          <ul class="trust-list">
+            <li><i class="bi bi-flag-fill"></i> In business <strong>&nbsp;since 1990</strong></li>
+            <li><i class="bi bi-people-fill"></i> <strong>300 staff</strong>,&nbsp;based in the UK</li>
+            <li><i class="bi bi-person-check-fill"></i> Trusted by over <strong>&nbsp;2 million customers</strong></li>
+            <li><i class="bi bi-star-fill"></i> <strong>137,500+</strong>&nbsp;positive reviews <span class="text-warning ms-1"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span></li>
+          </ul>
+
+          <div class="pay-icons">
+            <span><i class="bi bi-credit-card-2-front"></i> Mastercard</span>
+            <span>VISA</span>
+            <span>AMEX</span>
+            <span>PayPal</span>
+            <span>Apple Pay</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Help floating button -->
+<div class="help-fab"><i class="bi bi-question-lg"></i></div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row align-items-center mb-3">
+      <div class="col-md-3">
+        <a href="#" class="logo-box" style="filter:none;">
+          <div class="logo-icon" style="background:var(--ww-orange); color:#fff;">W</div>
+          <div class="logo-text" style="color:#1a1a1a;">
+            <span class="brand" style="color:#1a1a1a;">Workwear<br>Express</span>
+            <span class="tagline" style="color:#777;">Trust us with your name</span>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-9">
+        <div class="badge-row justify-content-md-end">
+          <div class="badge-circle">BSIF</div>
+          <div class="badge-circle">ISO<br>9001</div>
+          <div class="badge-circle">ISO<br>14001</div>
+          <div class="badge-circle">ISO<br>45001</div>
+          <div class="badge-circle">ISO<br>27001</div>
+          <div class="badge-circle">UKAS</div>
+          <div class="badge-circle">Cyber<br>Essentials</div>
+          <div class="badge-circle">Great<br>Place</div>
+          <div class="badge-circle">EcoVadis</div>
+          <div class="badge-circle">Sedex</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 col-md-3">
+        <div class="footer-heading">Help</div>
+        <ul class="list-unstyled footer-links">
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Frequently Asked Questions</a></li>
+          <li><a href="#">Payment Options</a></li>
+          <li><a href="#">Delivery</a></li>
+          <li><a href="#">Free Returns</a></li>
+          <li><a href="#">Credit Account Application</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="footer-heading">Customisation</div>
+        <ul class="list-unstyled footer-links">
+          <li><a href="#">Adding Logos - Explained</a></li>
+          <li><a href="#">Adding Logos - Pricing</a></li>
+          <li><a href="#">Artwork Guidelines</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="footer-heading">About</div>
+        <ul class="list-unstyled footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Bulk &amp; Corporate Users</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Terms and Conditions</a></li>
+          <li><a href="#">Grassroots Sports Fund 2026/27</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="footer-heading">Info</div>
+        <ul class="list-unstyled footer-links">
+          <li><a href="#">Anti-Bribery and Corruption Policy</a></li>
+          <li><a href="#">Environmental Policy</a></li>
+          <li><a href="#">DEI Policy</a></li>
+          <li><a href="#">Diversity Statistics and Policy</a></li>
+          <li><a href="#">Gender Pay Report</a></li>
+          <li><a href="#">Health &amp; Safety Policy</a></li>
+          <li><a href="#">Information Security Policy</a></li>
+          <li><a href="#">Modern Slavery Statement</a></li>
+          <li><a href="#">Privacy Policy And Cookies</a></li>
+          <li><a href="#">Quality Assurance Policy</a></li>
+          <li><a href="#">Shift Work Management Policy</a></li>
+          <li><a href="#">Supplier Code of Conduct</a></li>
+          <li><a href="#">Sustainability Report</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-3">
+      <div class="social-row">
+        <a href="#"><i class="bi bi-whatsapp"></i></a>
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+        <a href="#"><i class="bi bi-twitter-x"></i></a>
+        <a href="#"><i class="bi bi-youtube"></i></a>
+      </div>
+      <div><i class="bi bi-telephone-fill text-warning"></i> Call us free on 0800 028 5867</div>
+      <div>&copy; Workwear Express Ltd Company No. 3743499</div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Quantity increment / decrement
+  document.querySelectorAll('.qty-box').forEach(box => {
+    const input = box.querySelector('input');
+    const [minusBtn, plusBtn] = box.querySelectorAll('button');
+    minusBtn.addEventListener('click', () => {
+      let val = parseInt(input.value) || 1;
+      if (val > 1) input.value = val - 1;
+    });
+    plusBtn.addEventListener('click', () => {
+      let val = parseInt(input.value) || 1;
+      input.value = val + 1;
+    });
+  });
+
+  // Discount code toggle
+  document.querySelector('.discount-toggle').addEventListener('click', function () {
+    const icon = this.querySelector('i');
+    icon.classList.toggle('bi-chevron-down');
+    icon.classList.toggle('bi-chevron-up');
+  });
+</script>
+</body>
+</html>

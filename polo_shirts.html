@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personalised Polo Shirts - Workwear Express</title>
+
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<style>
+  :root{
+    --ww-orange: #f2600c;
+    --ww-orange-dark: #e05500;
+    --ww-green: #1c9b45;
+    --ww-green-dark: #17853b;
+    --ww-text: #2b2b2b;
+    --ww-muted: #767676;
+    --ww-border: #e6e6e6;
+    --ww-bg: #f4f4f4;
+  }
+
+  body{
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: var(--ww-text);
+    background-color: #fff;
+  }
+  a{ text-decoration: none; }
+
+  /* ===== Top bar ===== */
+  .top-header{ background-color: var(--ww-orange); padding: 14px 0 10px 0; }
+  .top-header .nav-link-sm{ color: #fff; font-size: 14px; font-weight: 500; white-space: nowrap; }
+  .top-header .nav-link-sm i{ margin-right: 6px; }
+
+  .logo-box{ display: flex; align-items: center; gap: 10px; }
+  .logo-box .logo-icon{
+    background: #fff; color: var(--ww-orange); width: 40px; height: 40px;
+    border-radius: 6px; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 22px; flex-shrink: 0;
+  }
+  .logo-box .logo-text{ line-height: 1.1; }
+  .logo-box .logo-text .brand{ font-weight: 700; font-size: 20px; display:block; color:#fff;}
+  .logo-box .logo-text .tagline{ font-size: 11px; opacity: .9; color:#fff; }
+
+  .search-wrap{ max-width: 420px; }
+  .search-wrap .form-control{ border-radius: 4px 0 0 4px; border: none; height: 42px; }
+  .search-wrap .btn-search{ background: #fff; border: none; border-radius: 0 4px 4px 0; color: var(--ww-orange); height: 42px; width: 44px; }
+
+  .call-us{ color: #fff; font-size: 13px; }
+  .call-us .number{ font-weight: 700; font-size: 16px; display:block; }
+
+  .basket-btn{ background: #fff; color: var(--ww-text); border-radius: 4px; padding: 8px 14px; font-weight: 600; font-size: 14px; position: relative; border: none; }
+  .basket-btn .badge-count{ background: #1a1a1a; color: #fff; border-radius: 50%; width: 20px; height: 20px; font-size: 11px; display: inline-flex; align-items: center; justify-content: center; margin-left: 6px; }
+
+  .form-check-input.vat-switch{ background-color: rgba(255,255,255,.5); }
+  .form-check-input.vat-switch:checked{ background-color: #fff; border-color: #fff; }
+
+  /* ===== Main nav ===== */
+  .main-nav{ background: #fff; border-bottom: 1px solid var(--ww-border); }
+  .main-nav .nav-link{ color: var(--ww-text); font-size: 15px; font-weight: 500; padding: 14px 14px; }
+  .main-nav .nav-link:hover{ color: var(--ww-orange); }
+  .main-nav .nav-link.active-clearance{ background: #1a1a1a; color: #fff; }
+
+  /* ===== Promo strip ===== */
+  .promo-strip{ background: #f1f1f1; font-size: 13px; padding: 8px 0; color: #444; }
+  .promo-strip strong{ font-weight: 700; }
+  .promo-strip .divider{ color: #ccc; }
+
+  /* ===== Green strip ===== */
+  .green-strip{ background: var(--ww-green); color: #fff; font-size: 14px; padding: 10px 0; }
+  .green-strip .divider{ opacity: .5; margin: 0 8px; }
+  .green-strip .stars i{ color: #ffd447; font-size: 13px; }
+  .green-strip .stars i.empty{ color: rgba(255,255,255,.4); }
+
+  /* ===== Breadcrumb / hero ===== */
+  .page-wrap{ background: var(--ww-bg); padding: 24px 0 50px 0; }
+  .breadcrumb-row{ font-size: 13px; margin-bottom: 14px; }
+  .breadcrumb-row a{ color: var(--ww-orange); font-weight: 600; }
+  .breadcrumb-row span{ color: #888; }
+
+  .hero-card{
+    background: #fff;
+    border-radius: 6px;
+    padding: 30px 32px;
+    margin-bottom: 34px;
+  }
+  .hero-title{ font-weight: 700; font-size: 30px; margin-bottom: 14px; }
+  .hero-desc{ font-size: 14px; color: #4a4a4a; line-height: 1.7; max-width: 560px; }
+
+  .cat-title{ font-weight: 700; font-size: 18px; margin-bottom: 14px; }
+  .view-all{ color: var(--ww-orange); font-weight: 600; font-size: 14px; }
+
+  .tag-btn{
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    padding: 9px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ww-text);
+    margin: 0 8px 8px 0;
+    display: inline-block;
+  }
+  .tag-btn:hover{ border-color: var(--ww-orange); color: var(--ww-orange); }
+
+  /* ===== Section headings ===== */
+  .section-title{ font-weight: 700; font-size: 26px; margin-bottom: 20px; }
+
+  /* ===== Featured product carousel ===== */
+  .featured-header{ display:flex; justify-content: space-between; align-items:center; margin-bottom: 20px;}
+  .carousel-nav{ display:flex; gap: 8px; }
+  .carousel-nav button{
+    width: 34px; height: 34px; border-radius: 50%; border: 1px solid #d9d9d9;
+    background:#fff; display:flex; align-items:center; justify-content:center; color:#555;
+  }
+  .carousel-nav button.active{ background: var(--ww-orange); color:#fff; border-color: var(--ww-orange); }
+
+  .product-card{
+    background: #fff;
+    border: 1px solid var(--ww-border);
+    border-radius: 6px;
+    overflow: hidden;
+    height: 100%;
+  }
+  .product-img-wrap{ position: relative; background: #f7f7f7; }
+  .product-img-wrap img{ width: 100%; height: 220px; object-fit: cover; }
+  .logo-chip{
+    position: absolute; top: 10px; left: 10px;
+    width: 34px; height: 34px; border-radius: 50%;
+    background: #1a1a1a; color: #fff; font-size: 7px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1.1;
+  }
+  .bestseller-tag{
+    position: absolute; bottom: 0; left: 0;
+    background: var(--ww-green); color: #fff; font-size: 11px; font-weight: 700;
+    padding: 4px 10px 4px 8px;
+  }
+  .bestseller-tag i{ margin-right: 4px; }
+  .product-body{ padding: 14px 16px 16px 16px; }
+  .product-name{ font-weight: 700; font-size: 14px; margin-bottom: 6px; min-height: 38px; }
+  .product-price{ font-size: 13px; color: #444; margin-bottom: 4px; }
+  .product-price .price-num{ color: var(--ww-orange); font-weight: 700; }
+  .product-colours{ font-size: 12px; color: var(--ww-muted); }
+  .product-colours strong{ color: var(--ww-text); }
+
+  /* ===== Category tiles ===== */
+  .cat-tile{
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    height: 210px;
+    display: block;
+  }
+  .cat-tile img{ width: 100%; height: 100%; object-fit: cover; }
+  .cat-tile .overlay{
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.65) 0%, rgba(0,0,0,0) 55%);
+  }
+  .cat-tile .cat-label{
+    position: absolute; bottom: 14px; left: 16px;
+    color: #fff; font-weight: 700; font-size: 15px;
+  }
+
+  /* ===== FAQ accordion ===== */
+  .faq-title{ font-weight: 700; font-size: 26px; margin: 40px 0 20px 0; }
+  .accordion-item{
+    border: 1px solid var(--ww-border) !important;
+    border-radius: 6px !important;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .accordion-button{
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--ww-text);
+    background: #fff;
+    padding: 16px 20px;
+  }
+  .accordion-button:not(.collapsed){
+    background: #fff;
+    color: var(--ww-orange);
+    box-shadow: none;
+  }
+  .accordion-button:focus{ box-shadow: none; }
+  .accordion-button::after{
+    background-image: none;
+    font-family: "bootstrap-icons";
+    content: "\f64d"; /* plus */
+    font-size: 16px;
+    width: auto;
+    height: auto;
+    transform: none;
+  }
+  .accordion-button:not(.collapsed)::after{
+    content: "\f2ea"; /* dash */
+  }
+  .accordion-body{ font-size: 14px; color: #4a4a4a; padding: 4px 20px 18px 20px; }
+
+  .help-fab{
+    position: fixed; right: 22px; bottom: 30px;
+    background: var(--ww-orange); color: #fff;
+    width: 52px; height: 52px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; box-shadow: 0 4px 10px rgba(0,0,0,.2); z-index: 999;
+  }
+
+  /* ===== Footer ===== */
+  .site-footer{ background: #fff; padding: 50px 0 20px 0; border-top: 1px solid var(--ww-border); }
+  .footer-heading{ font-weight: 700; font-size: 16px; margin-bottom: 14px; }
+  .footer-links li{ margin-bottom: 9px; }
+  .footer-links a{ color: #555; font-size: 14px; }
+  .footer-links a:hover{ color: var(--ww-orange); }
+  .badge-row{ display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin: 20px 0 34px 0; }
+  .badge-row .badge-circle{
+    width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--ww-border);
+    display: flex; align-items: center; justify-content: center; font-size: 9px; text-align: center; color: #555;
+  }
+  .social-row a{
+    width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--ww-border);
+    display: inline-flex; align-items: center; justify-content: center; color: #333; margin-right: 8px;
+  }
+  .footer-bottom{ border-top: 1px solid var(--ww-border); margin-top: 30px; padding-top: 20px; font-size: 13px; color: #666; }
+
+  @media (max-width: 991px){
+    .top-header .col-search{ order: 3; width: 100%; margin-top: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= TOP HEADER ================= -->
+<header class="top-header">
+  <div class="container">
+    <div class="d-none d-lg-flex justify-content-end gap-4 mb-2">
+      <a href="#" class="nav-link-sm"><i class="bi bi-geo-alt"></i>Track order</a>
+      <a href="#" class="nav-link-sm"><i class="bi bi-question-circle"></i>Need Help</a>
+      <a href="#" class="nav-link-sm"><i class="bi bi-box-seam"></i>Corporate Solutions &amp; Pricing</a>
+      <a href="#" class="nav-link-sm"><i class="bi bi-person-circle"></i>Login / Register</a>
+      <div class="d-flex align-items-center gap-2 nav-link-sm">
+        <span>USD</span><i class="bi bi-caret-down-fill" style="font-size:10px;"></i>
+        <span class="ms-2">inc vat</span>
+        <div class="form-check form-switch m-0">
+          <input class="form-check-input vat-switch" type="checkbox" checked>
+        </div>
+        <span>exc vat</span>
+      </div>
+    </div>
+
+    <div class="row align-items-center gy-2">
+      <div class="col-6 col-lg-auto">
+        <a href="#" class="logo-box">
+          <div class="logo-icon">W</div>
+          <div class="logo-text">
+            <span class="brand">Workwear<br>Express</span>
+            <span class="tagline">Trust us with your name</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-lg col-search order-3 order-lg-2 col-12">
+        <div class="search-wrap d-flex mx-auto">
+          <input type="text" class="form-control" placeholder="Search (e.g. Polo Shirts)..">
+          <button class="btn-search"><i class="bi bi-search"></i></button>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-auto order-2 order-lg-3 text-end">
+        <a href="#" class="call-us d-none d-md-block">
+          <i class="bi bi-telephone-fill"></i> Call us free on
+          <span class="number">0800 028 5867</span>
+        </a>
+      </div>
+
+      <div class="col-lg-auto order-4 text-end">
+        <button class="basket-btn">
+          <i class="bi bi-cart3"></i> Basket
+          <span class="badge-count">3</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= MAIN NAV ================= -->
+<nav class="main-nav">
+  <div class="container">
+    <ul class="nav flex-nowrap overflow-auto">
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">All Products</a></li>
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Brands</a></li>
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Jackets</a></li>
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">T-Shirts</a></li>
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Polo Shirts</a></li>
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Hi Vis</a></li>
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Trousers</a></li>
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Footwear</a></li>
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">PPE</a></li>
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Hoodies</a></li>
+      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Deals</a></li>
+      <li class="nav-item"><a class="nav-link active-clearance" href="polo_shirts.html">Clearance</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ================= PROMO STRIP ================= -->
+<div class="promo-strip">
+  <div class="container d-flex flex-wrap gap-2 gap-md-4 justify-content-center justify-content-md-start">
+    <span><i class="bi bi-gift"></i> <strong>Free Returns</strong> For Up To 28 Days!*</span>
+    <span class="divider d-none d-md-inline">|</span>
+    <span><i class="bi bi-patch-check"></i> <strong>Price Beat Guarantee</strong> Loved By Over 2 Million Customers!</span>
+    <span class="divider d-none d-md-inline">|</span>
+    <span><i class="bi bi-brush"></i> <strong>Free Logo Setup</strong> We'll create your logo for free</span>
+  </div>
+</div>
+
+<!-- ================= GREEN STRIP ================= -->
+<div class="green-strip">
+  <div class="container d-flex flex-wrap justify-content-center gap-2 gap-md-1 align-items-center">
+    <span><i class="bi bi-award"></i> UK's number one since 1990</span>
+    <span class="divider d-none d-md-inline">|</span>
+    <span><i class="bi bi-truck"></i> Get free delivery on orders over £49 net!</span>
+    <span class="divider d-none d-md-inline">|</span>
+    <span>Trustpilot
+      <span class="stars">
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill empty"></i>
+      </span>
+    </span>
+  </div>
+</div>
+
+<main class="page-wrap">
+  <div class="container">
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-row">
+      <a href="#">Home</a> <span>/ Personalised Polo Shirts</span>
+    </div>
+
+    <!-- Hero card -->
+    <div class="hero-card">
+      <div class="row">
+        <div class="col-lg-6">
+          <h1 class="hero-title">Personalised Polo Shirts</h1>
+          <p class="hero-desc">
+            Looking for personalised polo shirts that give your team a smart, professional look?
+            Our custom polos combine comfort, durability and high-quality embroidery or print,
+            ideal for uniforms, workwear and promotions. Choose from trusted brands like Uneek,
+            Kustom Kit, Premier, Portwest and Russell, with styles for corporate, hospitality,
+            healthcare and construction. Order one or kit out a full team with ease.
+          </p>
+        </div>
+        <div class="col-lg-6 mt-4 mt-lg-0">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="cat-title mb-0">Categories</div>
+            <a href="#" class="view-all">View All <i class="bi bi-chevron-right"></i></a>
+          </div>
+          <div>
+            <a href="#" class="tag-btn">Short Sleeve</a>
+            <a href="#" class="tag-btn">Long Sleeve</a>
+            <a href="#" class="tag-btn">Contrast</a>
+            <a href="#" class="tag-btn">100% Cotton</a>
+            <a href="#" class="tag-btn">100% Polyester</a>
+            <a href="#" class="tag-btn">Polycotton</a>
+            <a href="#" class="tag-btn">Men's</a>
+            <a href="#" class="tag-btn">Women's</a>
+            <a href="#" class="tag-btn">Kids</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured products -->
+    <div class="featured-header">
+      <h2 class="section-title mb-0">Featured Polo Shirts</h2>
+      <div class="carousel-nav">
+        <button type="button" id="prodPrev"><i class="bi bi-chevron-left"></i></button>
+        <button type="button" class="active" id="prodNext"><i class="bi bi-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-5 g-3 mb-5">
+
+      <div class="col">
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://placehold.co/400x440/1a1a1a/1a1a1a" alt="Best Workwear Polo Shirt">
+            <div class="logo-chip">YOUR<br>LOGO<br>HERE</div>
+            <div class="bestseller-tag"><i class="bi bi-star-fill"></i>Bestseller</div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Best Workwear Polo Shirt</div>
+            <div class="product-price">From <span class="price-num">$11.76</span> ex. VAT</div>
+            <div class="product-colours"><strong>17 Colours</strong> available</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://placehold.co/400x440/1a1a1a/1a1a1a" alt="Helly Hansen Manchester Polo">
+            <div class="logo-chip">YOUR<br>LOGO<br>HERE</div>
+            <div class="bestseller-tag"><i class="bi bi-star-fill"></i>Bestseller</div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Helly Hansen Mancheste...</div>
+            <div class="product-price">From <span class="price-num">$23.63</span> ex. VAT</div>
+            <div class="product-colours"><strong>8 Colours</strong> available</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://placehold.co/400x440/1a1a1a/1a1a1a" alt="Hard-Wearing Polo Shirt">
+            <div class="logo-chip">YOUR<br>LOGO<br>HERE</div>
+            <div class="bestseller-tag"><i class="bi bi-star-fill"></i>Bestseller</div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Hard-Wearing Polo Shirt</div>
+            <div class="product-price">From <span class="price-num">$19.95</span> ex. VAT</div>
+            <div class="product-colours"><strong>11 Colours</strong> available</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://placehold.co/400x440/1a1a1a/1a1a1a" alt="Nimbus Yale Polo">
+            <div class="logo-chip">YOUR<br>LOGO<br>HERE</div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Nimbus Yale Polo</div>
+            <div class="product-price">From <span class="price-num">$47.61</span> ex. VAT</div>
+            <div class="product-colours"><strong>3 Colours</strong> available</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://placehold.co/400x440/1a1a1a/1a1a1a" alt="Snickers Classic Polo Shirt">
+            <div class="logo-chip">YOUR<br>LOGO<br>HERE</div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Snickers Classic Polo Shirt</div>
+            <div class="product-price">From <span class="price-num">$21.25</span> ex. VAT</div>
+            <div class="product-colours"><strong>12 Colours</strong> available</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Category tiles -->
+    <h2 class="section-title">Polo Shirts Categories</h2>
+    <div class="row g-3 mb-5">
+      <div class="col-6 col-lg-3">
+        <a href="#" class="cat-tile">
+          <img src="https://placehold.co/400x420/2f8fb0/2f8fb0" alt="Short Sleeve Polo Shirts">
+          <div class="overlay"></div>
+          <div class="cat-label">Short Sleeve Polo Shirts</div>
+        </a>
+      </div>
+      <div class="col-6 col-lg-3">
+        <a href="#" class="cat-tile">
+          <img src="https://placehold.co/400x420/3f5f45/3f5f45" alt="Long Sleeve Polo Shirts">
+          <div class="overlay"></div>
+          <div class="cat-label">Long Sleeve Polo Shirts</div>
+        </a>
+      </div>
+      <div class="col-6 col-lg-3">
+        <a href="#" class="cat-tile">
+          <img src="https://placehold.co/400x420/c9c2b8/c9c2b8" alt="Contrast Polo Shirts">
+          <div class="overlay"></div>
+          <div class="cat-label">Contrast Polo Shirts</div>
+        </a>
+      </div>
+      <div class="col-6 col-lg-3">
+        <a href="#" class="cat-tile">
+          <img src="https://placehold.co/400x420/6fbf9e/6fbf9e" alt="100% Cotton Polo Shirts">
+          <div class="overlay"></div>
+          <div class="cat-label">100% Cotton Polo Shirts</div>
+        </a>
+      </div>
+      <div class="col-6 col-lg-3">
+        <a href="#" class="cat-tile">
+          <img src="https://placehold.co/400x420/e4d9bf/e4d9bf" alt="100% Polyester Polo Shirts">
+          <div class="overlay"></div>
+          <div class="cat-label">100% Polyester Polo Shirts</div>
+        </a>
+      </div>
+      <div class="col-6 col-lg-3">
+        <a href="#" class="cat-tile">
+          <img src="https://placehold.co/400x420/9fc2e0/9fc2e0" alt="Polycotton Polo Shirts">
+          <div class="overlay"></div>
+          <div class="cat-label">Polycotton Polo Shirts</div>
+        </a>
+      </div>
+      <div class="col-6 col-lg-3">
+        <a href="#" class="cat-tile">
+          <img src="https://placehold.co/400x420/a9d8c4/a9d8c4" alt="Men's Polo Shirts">
+          <div class="overlay"></div>
+          <div class="cat-label">Men's Polo Shirts</div>
+        </a>
+      </div>
+      <div class="col-6 col-lg-3">
+        <a href="#" class="cat-tile">
+          <img src="https://placehold.co/400x420/d9d9d9/d9d9d9" alt="Women's Polo Shirts">
+          <div class="overlay"></div>
+          <div class="cat-label">Women's Polo Shirts</div>
+        </a>
+      </div>
+      <div class="col-6 col-lg-3">
+        <a href="#" class="cat-tile">
+          <img src="https://placehold.co/400x420/e9dfc4/e9dfc4" alt="Kids Polo Shirts">
+          <div class="overlay"></div>
+          <div class="cat-label">Kids Polo Shirts</div>
+        </a>
+      </div>
+      <div class="col-6 col-lg-3">
+        <a href="#" class="cat-tile">
+          <img src="https://placehold.co/400x420/cfd6d8/cfd6d8" alt="All Polo Shirts">
+          <div class="overlay"></div>
+          <div class="cat-label">All Polo Shirts</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <h2 class="faq-title">Polo Shirts FAQs</h2>
+    <div class="accordion" id="faqAccordion">
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+            How do I choose the right size before ordering?
+          </button>
+        </h2>
+        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Check our size guide on each product page, which lists chest measurements for every size. If you're between sizes, we recommend sizing up for a more relaxed fit.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+            What happens if my polo shirt doesn't fit?
+          </button>
+        </h2>
+        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Unpersonalised items can be returned or exchanged within 28 days. Personalised items can only be exchanged for the same design in a different size.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+            Can personalised polo shirts be returned?
+          </button>
+        </h2>
+        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Personalised polo shirts can be returned if faulty or if we made an error. For sizing exchanges, we'll re-personalise the correct size at no extra cost.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+            What if my polo shirt is faulty?
+          </button>
+        </h2>
+        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Contact our customer service team with photos of the fault and we'll arrange a replacement or refund as quickly as possible.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+            What if the quality isn't what I expected?
+          </button>
+        </h2>
+        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">We stand behind every product we sell. If you're not happy with the quality, get in touch and we'll work with you to find a solution.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+            How do returns work?
+          </button>
+        </h2>
+        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Simply fill out the returns form included with your order, or contact us to arrange a collection. Refunds are processed once the item is received.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+            What's the difference between embroidered and printed polo shirts?
+          </button>
+        </h2>
+        <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Embroidery stitches your logo directly into the fabric for a durable, premium finish, while printing applies the design to the surface and works well for detailed, multi-colour artwork.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+            Is embroidery or print better for work uniforms?
+          </button>
+        </h2>
+        <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Embroidery tends to be more durable for everyday workwear that's washed frequently, while print is a cost-effective option for one-off events or promotions.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq9">
+            Can I order different sizes with the same logo design?
+          </button>
+        </h2>
+        <div id="faq9" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Yes, you can order any mix of sizes and colours within an order and we'll apply the same logo design consistently across every garment.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq10">
+            Is embroidery the best option for custom polo shirts for a professional look?
+          </button>
+        </h2>
+        <div id="faq10" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Embroidery generally gives the smartest, most professional finish for polo shirts, especially for logos with simple shapes and limited colours.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq11">
+            How durable are embroidered logos on polos after repeated washing?
+          </button>
+        </h2>
+        <div id="faq11" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Embroidered logos are highly durable and, when cared for according to the garment's wash instructions, will maintain their appearance through hundreds of washes.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq12">
+            Are your polo shirts suitable for corporate, retail, and hospitality teams?
+          </button>
+        </h2>
+        <div id="faq12" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Yes, our range covers everything from smart corporate styles to hard-wearing options suited to retail, hospitality, healthcare and construction environments.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq13">
+            Can I personalise polo shirts with individual names or roles?
+          </button>
+        </h2>
+        <div id="faq13" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Yes, alongside your logo you can add individual names, initials or job roles to each polo shirt for an extra personal touch.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq14">
+            Do you offer lightweight and breathable polos for active work environments?
+          </button>
+        </h2>
+        <div id="faq14" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Yes, we stock a range of lightweight, moisture-wicking polo shirts designed for comfort during active or physically demanding work.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq15">
+            What's the difference between embroidered and printed polos?
+          </button>
+        </h2>
+        <div id="faq15" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Embroidery offers a raised, textured finish that's built to last, while printing lies flat against the fabric and suits designs with fine detail or gradients.</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<!-- Help floating button -->
+<div class="help-fab"><i class="bi bi-question-lg"></i></div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row align-items-center mb-3">
+      <div class="col-md-3">
+        <a href="#" class="logo-box">
+          <div class="logo-icon" style="background:var(--ww-orange); color:#fff;">W</div>
+          <div class="logo-text">
+            <span class="brand" style="color:#1a1a1a;">Workwear<br>Express</span>
+            <span class="tagline" style="color:#777;">Trust us with your name</span>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-9">
+        <div class="badge-row justify-content-md-end">
+          <div class="badge-circle">BSIF</div>
+          <div class="badge-circle">ISO<br>9001</div>
+          <div class="badge-circle">ISO<br>14001</div>
+          <div class="badge-circle">ISO<br>45001</div>
+          <div class="badge-circle">ISO<br>27001</div>
+          <div class="badge-circle">UKAS</div>
+          <div class="badge-circle">Cyber<br>Essentials</div>
+          <div class="badge-circle">Great<br>Place</div>
+          <div class="badge-circle">EcoVadis</div>
+          <div class="badge-circle">Sedex</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 col-md-3">
+        <div class="footer-heading">Help</div>
+        <ul class="list-unstyled footer-links">
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Frequently Asked Questions</a></li>
+          <li><a href="#">Payment Options</a></li>
+          <li><a href="#">Delivery</a></li>
+          <li><a href="#">Free Returns</a></li>
+          <li><a href="#">Credit Account Application</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="footer-heading">Customisation</div>
+        <ul class="list-unstyled footer-links">
+          <li><a href="#">Adding Logos - Explained</a></li>
+          <li><a href="#">Adding Logos - Pricing</a></li>
+          <li><a href="#">Artwork Guidelines</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="footer-heading">About</div>
+        <ul class="list-unstyled footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Bulk &amp; Corporate Users</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Terms and Conditions</a></li>
+          <li><a href="#">Grassroots Sports Fund 2026/27</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="footer-heading">Info</div>
+        <ul class="list-unstyled footer-links">
+          <li><a href="#">Anti-Bribery and Corruption Policy</a></li>
+          <li><a href="#">Environmental Policy</a></li>
+          <li><a href="#">DEI Policy</a></li>
+          <li><a href="#">Diversity Statistics and Policy</a></li>
+          <li><a href="#">Gender Pay Report</a></li>
+          <li><a href="#">Health &amp; Safety Policy</a></li>
+          <li><a href="#">Information Security Policy</a></li>
+          <li><a href="#">Modern Slavery Statement</a></li>
+          <li><a href="#">Privacy Policy And Cookies</a></li>
+          <li><a href="#">Quality Assurance Policy</a></li>
+          <li><a href="#">Shift Work Management Policy</a></li>
+          <li><a href="#">Supplier Code of Conduct</a></li>
+          <li><a href="#">Sustainability Report</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-3">
+      <div class="social-row">
+        <a href="#"><i class="bi bi-whatsapp"></i></a>
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+        <a href="#"><i class="bi bi-twitter-x"></i></a>
+        <a href="#"><i class="bi bi-youtube"></i></a>
+      </div>
+      <div><i class="bi bi-telephone-fill text-warning"></i> Call us free on 0800 028 5867</div>
+      <div>&copy; Workwear Express Ltd Company No. 3743499</div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Simple scroll for featured product carousel
+  const track = document.querySelector('.row.row-cols-1.row-cols-sm-2.row-cols-lg-5');
+  document.getElementById('prodNext').addEventListener('click', () => {
+    track.scrollBy({left: 260, behavior: 'smooth'});
+  });
+  document.getElementById('prodPrev').addEventListener('click', () => {
+    track.scrollBy({left: -260, behavior: 'smooth'});
+  });
+</script>
+</body>
+</html>
