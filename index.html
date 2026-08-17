@@ -158,10 +158,10 @@
   /* ===== CATEGORY GRID ===== */
   .cat-hero{
     background:var(--ww-orange); color:#fff; display:flex; align-items:center; justify-content:center;
-    font-weight:700; font-size:1.3rem; text-align:center; min-height:140px; border-radius:4px;
+    font-weight:700; font-size:1.3rem; text-align:center; min-height:200px; border-radius:4px;
   }
   .cat-tile{
-    position:relative; border-radius:4px; overflow:hidden; min-height:140px;
+    position:relative; border-radius:4px; overflow:hidden; min-height:200px;
     background:linear-gradient(160deg,#3a3a3a,#161616);
     display:flex; align-items:flex-end;
   }
@@ -244,17 +244,17 @@
 
 <!-- ============ DELIVERY STRIP (mobile) ============ -->
 <div class="delivery-strip d-lg-none">
-  <i class="bi bi-truck me-1"></i>Get free delivery on orders over £49 net!
+  <i class="bi bi-truck me-1"></i>Get free delivery on orders over £150 net!
 </div>
 
 <!-- ============ PERK STRIP (mobile scrolling row) ============ -->
-<div class="perk-strip d-lg-none">
+<!-- <div class="perk-strip d-lg-none">
   <div class="perk-strip-inner">
     <span><strong>Free Returns</strong> For Up To 28 Days!*</span>
     <span><strong>Price Beat Guarantee</strong> Loved By Over 2 million customers!</span>
     <span><strong>Free Logo Setup</strong> We'll create your logo for free</span>
   </div>
-</div>
+</div> -->
 
 <!-- ============ MOBILE ICON BAR (Menu / Search / Account / Basket) ============ -->
 <div class="mobile-top-bar d-lg-none">
@@ -333,7 +333,7 @@
 
       <div class="call-us text-white d-none d-md-block ms-2">
         <i class="bi bi-telephone-fill"></i> Call us free on
-        <span class="num">0800 028 5867</span>
+        <span class="num">‪+44 7728 894203‬</span>
       </div>
 
       <a href="#" class="basket-btn ms-2">
@@ -464,25 +464,53 @@
       <div class="cat-hero">Browse<br>Workwear by<br>Category</div>
     </div>
     <div class="col-6 col-md-3">
-      <div class="cat-tile"><i class="bi bi-square cat-icon"></i><div class="cat-label">T-Shirts <i class="bi bi-chevron-right"></i></div></div>
+        <div class="cat-tile"
+                style="width:100%; background:url('img/product/t-shirt.jpeg') center/cover no-repeat;">
+                <div class="cat-label">
+                    T-Shirts <i class="bi bi-chevron-right"></i>
+                </div>
+            </div>
     </div>
     <div class="col-6 col-md-3">
-      <div class="cat-tile"><i class="bi bi-square cat-icon"></i><div class="cat-label">Polo Shirts <i class="bi bi-chevron-right"></i></div></div>
+            <div class="cat-tile"
+                style="width:100%; background:url('img/product/hoodi.jpeg') center/cover no-repeat;">
+                <div class="cat-label">
+                    Hoodies <i class="bi bi-chevron-right"></i>
+                </div>
+            </div>
     </div>
     <div class="col-6 col-md-3">
-      <div class="cat-tile"><i class="bi bi-square cat-icon"></i><div class="cat-label">Hoodies <i class="bi bi-chevron-right"></i></div></div>
+            <div class="cat-tile"
+                style="width:100%; background:url('img/product/Hi-Vis.jpeg') center/cover no-repeat;">
+                <div class="cat-label">
+                    Hi-Vis <i class="bi bi-chevron-right"></i>
+                </div>
+            </div>
+    </div>
+        <div class="col-6 col-md-3">
+            <div class="cat-tile"
+                style="width:100%; background:url('img/product/headwear.jpeg') center/cover no-repeat;">
+                <div class="cat-label">
+                    Headwear <i class="bi bi-chevron-right"></i>
+                </div>
+            </div>
+    </div>
+
+      <div class="col-6 col-md-3">
+            <div class="cat-tile"
+                style="width:100%; background:url('img/product/jackets.jpeg') center/cover no-repeat;">
+                <div class="cat-label">
+                    Jackets <i class="bi bi-chevron-right"></i>
+                </div>
+            </div>
     </div>
     <div class="col-6 col-md-3">
-      <div class="cat-tile"><i class="bi bi-vest cat-icon"></i><div class="cat-label">Hi-Vis <i class="bi bi-chevron-right"></i></div></div>
-    </div>
-    <div class="col-6 col-md-3">
-      <div class="cat-tile"><i class="bi bi-circle cat-icon"></i><div class="cat-label">Headwear <i class="bi bi-chevron-right"></i></div></div>
-    </div>
-    <div class="col-6 col-md-3">
-      <div class="cat-tile"><i class="bi bi-square cat-icon"></i><div class="cat-label">Jackets <i class="bi bi-chevron-right"></i></div></div>
-    </div>
-    <div class="col-6 col-md-3">
-      <div class="cat-tile"><i class="bi bi-bookmark cat-icon"></i><div class="cat-label">Trousers <i class="bi bi-chevron-right"></i></div></div>
+            <div class="cat-tile"
+                style="width:100%; background:url('img/product/trousers.jpeg') center/cover no-repeat;">
+                <div class="cat-label">
+                    Trousers <i class="bi bi-chevron-right"></i>
+                </div>
+            </div>
     </div>
   </div>
 </div>
@@ -540,11 +568,11 @@
       </div>
     </div>
 
-    <h4 class="text-center fw-bold text-warning" style="color:var(--ww-orange) !important;">
+    <!-- <h4 class="text-center fw-bold text-warning" style="color:var(--ww-orange) !important;">
       2026 marks 36 years of expertise in<br>full service custom work apparel
-    </h4>
+    </h4> -->
 
-    <div class="row align-items-center mt-4 g-4">
+    <!-- <div class="row align-items-center mt-4 g-4">
       <div class="col-12 col-lg-8">
         <div class="row g-3 row-cols-3 row-cols-md-5 text-center">
           <div class="col"><div class="trusted-logo">John Lewis</div></div>
@@ -564,7 +592,7 @@
         <p class="small text-muted">We're fantastically proud to cultivate a customer base of over 2 million clients, serving businesses across 100+ different countries in the last 12 months alone. Our existing clients rely on us for amazing customer service, top quality custom work wear products, prompt delivery, and excellent value.</p>
         <button class="btn btn-ww-orange">Shop Now <i class="bi bi-chevron-right"></i></button>
       </div>
-    </div>
+    </div> -->
   </div>
 </section>
 
@@ -626,7 +654,7 @@
             </a>
         </div>
     </div>
-      <div class="col-12 col-md-8">
+      <!-- <div class="col-12 col-md-8">
         <div class="d-flex flex-wrap gap-2">
           <div class="cert-badge">BSIF</div>
           <div class="cert-badge">ISO</div>
@@ -637,7 +665,7 @@
           <div class="cert-badge">Sedex</div>
           <div class="cert-badge">Disability Confident</div>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="row g-4">
@@ -666,16 +694,16 @@
 
     <div class="row align-items-center g-3">
       <div class="col-12 col-md-4 d-flex gap-2">
-        <a href="#" class="social-icon"><i class="bi bi-whatsapp"></i></a>
+        <!-- <a href="#" class="social-icon"><i class="bi bi-whatsapp"></i></a> -->
         <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+        <!-- <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
         <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
         <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
-        <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+        <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a> -->
       </div>
       <div class="col-12 col-md-4 text-md-center">
         <span style="color:var(--ww-orange);"><i class="bi bi-telephone-fill"></i></span>
-        Call us free on <strong>0800 028 5867</strong>
+        Call us free on <strong>‪+44 7728 894203‬</strong>
       </div>
       <div class="col-12 col-md-4 d-flex flex-wrap gap-2 justify-content-md-end">
         <div class="payment-badge">PayPal</div>
@@ -684,7 +712,7 @@
       </div>
     </div>
 
-    <p class="text-center text-muted small mt-4 mb-0">© Workwear Express Ltd Company No. 3743499</p>
+    <p class="text-center text-muted small mt-4 mb-0">Copyright @ 2026 | Workwear Boss</p>
   </div>
 </footer>
 
