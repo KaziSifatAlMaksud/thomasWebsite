@@ -82,7 +82,7 @@
   .mobile-top-bar .icon-btn i{font-size:1.6rem; line-height:1;}
   .mobile-top-bar .icon-btn .basket-dot{
     position:absolute; top:6px; right:calc(50% - 20px);
-    width:9px; height:9px; background:#111; border-radius:50%;
+    width:9px; height:9px; background:#fff; border-radius:50%;
   }
 
   /* ===== MOBILE SEARCH BOX (full width bar under orange strip) ===== */
@@ -244,159 +244,163 @@
 <body>
 
 <!-- ============ DELIVERY STRIP (mobile) ============ -->
-<div class="delivery-strip d-lg-none">
-  <i class="bi bi-truck me-1"></i>Get free delivery on orders over £150 net!
-</div>
-
-<!-- ============ PERK STRIP (mobile scrolling row) ============ -->
-<!-- <div class="perk-strip d-lg-none">
-  <div class="perk-strip-inner">
-    <span><strong>Free Returns</strong> For Up To 28 Days!*</span>
-    <span><strong>Price Beat Guarantee</strong> Loved By Over 2 million customers!</span>
-    <span><strong>Free Logo Setup</strong> We'll create your logo for free</span>
-  </div>
-</div> -->
-
-<!-- ============ MOBILE ICON BAR (Menu / Search / Account / Basket) ============ -->
-<div class="mobile-top-bar d-lg-none">
-  <div class="container">
-    <div class="row-icons">
-      <div class="d-flex gap-4">
-          <button class="icon-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav">
-            <i class="bi bi-list"></i>Menu
-          </button>
-          <button class="icon-btn" type="button" data-bs-toggle="collapse" data-bs-target="#mobileSearchCollapse">
-            <i class="bi bi-search"></i>Search
-          </button>
-
-      </div>
-       <div class="d-flex gap-4">
-         <img src="img/logo.jpeg"
-            alt="Workwear Express"
-            class="img-fluid"
-            style="height: 45px; width: auto;">
-       </div>
-       <div class="d-flex gap-4">
-           <a href="#" class="icon-btn">
-            <i class="bi bi-person"></i>Account
-          </a>
-          <a href="#" class="icon-btn">
-            <i class="bi bi-cart3"></i>Basket
-            <span class="basket-dot" id="cartCountMobile"></span>
-          </a>
-
-
-       </div>
-     
-   
-    </div>
-  </div>
-</div>
-
-<!-- ============ MOBILE SEARCH BOX ============ -->
-<div class="collapse show d-lg-none" id="mobileSearchCollapse">
-  <div class="mobile-search-box">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search (e.g. Polo Shirts)..">
-      <button class="btn" type="button"><i class="bi bi-search"></i></button>
-    </div>
-  </div>
-</div>
-
-<!-- ============ TOP BAR (desktop) ============ -->
-<div class="top-bar d-none d-lg-block">
-  <div class="container">
-    <div class="d-flex align-items-center gap-2 py-1 flex-wrap">
-
-      <a href="#" class="d-flex align-items-center text-white me-2">
-        <img src="img/logo.jpeg"
-            alt="Workwear Express"
-            class="img-fluid"
-            style="height: 45px; width: auto;">
-      </a>
-
-      <div class="d-none d-lg-flex top-links ms-2">
-        <!-- <a href="#"><i class="bi bi-truck"></i>Track order</a>
-        <a href="#"><i class="bi bi-question-circle"></i>Need Help</a>
-        <a href="#"><i class="bi bi-briefcase"></i>Corporate Solutions & Pricing</a> -->
+ <header>
+      <div class="delivery-strip d-lg-none">
+        <i class="bi bi-truck me-1"></i>Get free delivery on orders over £150 net!
       </div>
 
-      <div class="flex-grow-1 order-3 order-lg-0 mt-2 mt-lg-0" style="min-width:180px;">
-        <div class="input-group search-box">
-          <input type="text" class="form-control" placeholder="Search (e.g. Polo Shirts)..">
-          <button class="btn" type="button"><i class="bi bi-search"></i></button>
+      <!-- ============ PERK STRIP (mobile scrolling row) ============ -->
+      <!-- <div class="perk-strip d-lg-none">
+        <div class="perk-strip-inner">
+          <span><strong>Free Returns</strong> For Up To 28 Days!*</span>
+          <span><strong>Price Beat Guarantee</strong> Loved By Over 2 million customers!</span>
+          <span><strong>Free Logo Setup</strong> We'll create your logo for free</span>
+        </div>
+      </div> -->
+
+      <!-- ============ MOBILE ICON BAR (Menu / Search / Account / Basket) ============ -->
+      <div class="mobile-top-bar d-lg-none">
+        <div class="container">
+          <div class="row-icons">
+            <div class="d-flex gap-4">
+                <button class="icon-btn text-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav">
+                  <i class="bi bi-list "></i>Menu
+                </button>
+                <button class="icon-btn text-light" type="button" data-bs-toggle="collapse" data-bs-target="#mobileSearchCollapse">
+                  <i class="bi bi-search"></i>Search
+                </button>
+
+            </div>
+            <div class="d-flex gap-4">
+              <img src="img/logo.jpeg"
+                  alt="Workwear Express"
+                  class="img-fluid"
+                  style="height: 45px; width: auto;">
+            </div>
+            <div class="d-flex gap-4">
+                <a href="#" class="icon-btn text-light">
+                  <i class="bi bi-person"></i>Account
+                </a>
+                <a href="#" class="icon-btn text-light">
+                  <i class="bi bi-cart3"></i>Basket
+                  <span class="basket-dot" id="cartCountMobile"></span>
+                </a>
+
+
+            </div>
+          
+        
+          </div>
         </div>
       </div>
 
-      <div class="d-none d-lg-flex align-items-center gap-3 ms-auto">
-        <a href="#" class="text-white top-links mb-0"><i class="bi bi-person"></i>Login / Register</a>
+      <!-- ============ MOBILE SEARCH BOX ============ -->
+      <div class="collapse show d-lg-none" id="mobileSearchCollapse">
+        <div class="mobile-search-box">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search (e.g. Polo Shirts)..">
+            <button class="btn" type="button"><i class="bi bi-search"></i></button>
+          </div>
+        </div>
       </div>
 
-      <div class="call-us text-white d-none d-md-block ms-2">
-        <i class="bi bi-telephone-fill"></i> Call us free on
-        <span class="num">‪+44 7728 894203‬</span>
+      <!-- ============ TOP BAR (desktop) ============ -->
+      <div class="top-bar d-none d-lg-block">
+        <div class="container">
+          <div class="d-flex align-items-center gap-2 py-1 flex-wrap">
+
+            <a href="#" class="d-flex align-items-center text-white me-2">
+              <img src="img/logo.jpeg"
+                  alt="Workwear Express"
+                  class="img-fluid"
+                  style="height: 45px; width: auto;">
+            </a>
+
+            <div class="d-none d-lg-flex top-links ms-2">
+              <!-- <a href="#"><i class="bi bi-truck"></i>Track order</a>
+              <a href="#"><i class="bi bi-question-circle"></i>Need Help</a>
+              <a href="#"><i class="bi bi-briefcase"></i>Corporate Solutions & Pricing</a> -->
+            </div>
+
+            <div class="flex-grow-1 order-3 order-lg-0 mt-2 mt-lg-0" style="min-width:180px;">
+              <div class="input-group search-box">
+                <input type="text" class="form-control" placeholder="Search (e.g. Polo Shirts)..">
+                <button class="btn" type="button"><i class="bi bi-search"></i></button>
+              </div>
+            </div>
+
+            <div class="d-none d-lg-flex align-items-center gap-3 ms-auto">
+              <a href="#" class="text-white top-links mb-0"><i class="bi bi-person"></i>Login / Register</a>
+            </div>
+
+            <div class="call-us text-white d-none d-md-block ms-2">
+              <i class="bi bi-telephone-fill"></i> Call us free on
+              <span class="num">‪+44 7728 894203‬</span>
+            </div>
+
+            <a href="#" class="basket-btn ms-2">
+              <i class="bi bi-cart3"></i>
+              <span class="basket-count" id="cartCount">2</span>
+            </a>
+          </div>
+        </div>
       </div>
 
-      <a href="#" class="basket-btn ms-2">
-        <i class="bi bi-cart3"></i>
-        <span class="basket-count" id="cartCount">2</span>
-      </a>
-    </div>
-  </div>
-</div>
+      <!-- Mobile offcanvas nav -->
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileNav">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="list-unstyled fw-semibold">
+            <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">All Products</a></li>
+            <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">Brands</a></li>
+            <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">T-Shirts</a></li>
+            <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">Polo Shirts</a></li>
+            <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">Hi Vis</a></li>
+            <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">Trousers</a></li>
+            <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">Footwear</a></li>
+            <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">PPE</a></li>
+            <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">Hoodies</a></li>
+            <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">Deals</a></li>
+            <li class="py-2"><a href="polo_shirts.html" class="text-dark">Clearance</a></li>
+          </ul>
+        </div>
+      </div>
 
-<!-- Mobile offcanvas nav -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileNav">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title">Menu</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-  </div>
-  <div class="offcanvas-body">
-    <ul class="list-unstyled fw-semibold">
-      <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">All Products</a></li>
-      <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">Brands</a></li>
-      <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">T-Shirts</a></li>
-      <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">Polo Shirts</a></li>
-      <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">Hi Vis</a></li>
-      <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">Trousers</a></li>
-      <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">Footwear</a></li>
-      <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">PPE</a></li>
-      <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">Hoodies</a></li>
-      <li class="py-2 border-bottom"><a href="polo_shirts.html" class="text-dark">Deals</a></li>
-      <li class="py-2"><a href="polo_shirts.html" class="text-dark">Clearance</a></li>
-    </ul>
-  </div>
-</div>
+      <!-- ============ MAIN NAV (desktop) ============ -->
+      <nav class="main-nav d-none d-lg-block">
+        <div class="container">
+          <ul class="nav justify-content-center flex-wrap">
+            <li class="nav-item"><a class="nav-link" href="polo_shirts.html">All Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Brands</a></li>
+            <li class="nav-item"><a class="nav-link" href="polo_shirts.html">T-Shirts</a></li>
+            <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Polo Shirts</a></li>
+            <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Hi Vis</a></li>
+            <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Trousers</a></li>
+            <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Footwear</a></li>
+            <li class="nav-item"><a class="nav-link" href="polo_shirts.html">PPE</a></li>
+            <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Hoodies</a></li>
+            <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Deals</a></li>
+            <li class="nav-item"><a class="nav-link clearance" href="polo_shirts.html">Clearance</a></li>
+          </ul>
+        </div>
+      </nav>
 
-<!-- ============ MAIN NAV (desktop) ============ -->
-<nav class="main-nav d-none d-lg-block">
-  <div class="container">
-    <ul class="nav justify-content-center flex-wrap">
-      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">All Products</a></li>
-      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Brands</a></li>
-      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">T-Shirts</a></li>
-      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Polo Shirts</a></li>
-      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Hi Vis</a></li>
-      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Trousers</a></li>
-      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Footwear</a></li>
-      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">PPE</a></li>
-      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Hoodies</a></li>
-      <li class="nav-item"><a class="nav-link" href="polo_shirts.html">Deals</a></li>
-      <li class="nav-item"><a class="nav-link clearance" href="polo_shirts.html">Clearance</a></li>
-    </ul>
-  </div>
-</nav>
+      <!-- ============ TRUST STRIP (desktop) ============ -->
+      <div class="trust-strip d-none d-lg-block">
+        <div class="container">
+          <div class="row text-center g-1 align-items-center">
+            <div class="col-12 col-md-4"><i class="bi bi-patch-check-fill"></i> UK's number one since 1990</div>
+            <div class="col-12 col-md-4"><i class="bi bi-truck"></i> Get free delivery on orders over £49 net!</div>
+            <div class="col-12 col-md-4">Trustpilot <span class="stars">★★★★</span><span class="opacity-50">☆</span></div>
+          </div>
+        </div>
+      </div>
 
-<!-- ============ TRUST STRIP (desktop) ============ -->
-<div class="trust-strip d-none d-lg-block">
-  <div class="container">
-    <div class="row text-center g-1 align-items-center">
-      <div class="col-12 col-md-4"><i class="bi bi-patch-check-fill"></i> UK's number one since 1990</div>
-      <div class="col-12 col-md-4"><i class="bi bi-truck"></i> Get free delivery on orders over £49 net!</div>
-      <div class="col-12 col-md-4">Trustpilot <span class="stars">★★★★</span><span class="opacity-50">☆</span></div>
-    </div>
-  </div>
-</div>
+ </header>
+
 
 <!-- ============ HERO PROMO GRID ============ -->
 <div class="container promo-grid">
